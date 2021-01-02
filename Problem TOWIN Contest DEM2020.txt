@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+#define fastio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+using namespace std; typedef long long ll; typedef unsigned long long ull; int MOD = 1000000007;
+
+
+
+void solve () {
+  ll n;
+  cin >> n;
+  vector<ll> a;
+  for (int i = 0; i < n; i++) {
+    ll kkk; cin >> kkk;
+    a.push_back(kkk);
+  }
+  sort(a.begin(), a.end(), greater<int>());
+
+  if (n == 1) {
+    cout << "first";
+    return;
+  }
+  if (n == 3) {
+    ll first = a[0];
+    ll second = a[1] + a[2];
+    if (first > second) cout << "first";
+    else if (first == second) cout << "draw";
+    else  cout << "second";
+    return;
+  }
+  if (n == 2) {
+    ll first = a[0];
+    ll second = a[1];
+    if (first > second) cout << "first";
+    else if (first == second) cout << "draw";
+    else  cout << "second";
+    return;
+  }
+
+  ll first = a[0];
+  ll second = a[1] + a[2];
+
+  for (int i = 3; i < n; i++) {
+
+    if (i % 2 == 0) second += a[i];
+    else  first += a[i];
+  }
+
+  if (first > second) cout << "first";
+  else if (first == second) cout << "draw";
+  else  cout << "second";
+}
+
+
+int main() {
+
+  fastio
+
+  int t = 1;
+  cin >> t;
+  while (t--) {
+    solve();
+    cout << endl;
+  }
+  return 0;
+}

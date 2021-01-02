@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std; typedef long long ll; typedef unsigned long long ull;int MOD=1000000007;
+
+
+void solve ()
+{ 
+      int n;
+      cin>>n;
+      vector<int> a;
+      for (int i=0;i<n;i++)
+      {
+          int kkk; cin>>kkk;
+          a.push_back(kkk);
+      }
+      int flag=0;
+      for (int i=0;i<n;i++)
+      {
+          if (a[i]%2==0)
+          {
+              flag=1;
+              break;
+          }
+      }
+      
+      if (flag==1)
+        cout<<"NO";
+       else
+       cout<<"YES";
+}
+
+
+int main() {
+#ifdef iq
+  freopen("a.in", "r", stdin);
+#endif
+  ios::sync_with_stdio(0);
+  cin.tie(0);
+  int t;
+  cin >> t;
+  while (t--) 
+  {
+    solve();
+    cout<<endl;
+  }
+}
+

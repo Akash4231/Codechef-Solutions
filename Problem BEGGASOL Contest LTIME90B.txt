@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+void solve()
+{
+    int n;
+    cin >> n;
+    vector<int>a(n);
+    for (int i = 0; i < n; i++)   cin >> a[i];
+
+    ll ans = 0;
+    int cur = a[0];
+
+    for (int i = 1; i < n; i++) {
+        if (cur == 0) {
+            break;
+        }
+
+        else
+            cur += a[i];
+
+        cur--;
+        ans++;
+    }
+    cout << ans + cur;
+
+}
+
+
+int main()
+{
+#ifndef ONLINE_JUDGE
+    freopen ("input.txt", "r", stdin);
+    freopen ("op.txt", "w", stdout);
+#endif
+
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t = 1;
+    cin >> t;
+    while (t--) {
+        solve();
+        cout << "\n";
+    }
+
+    return 0;
+}
+
+

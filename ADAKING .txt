@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std; typedef long long ll; typedef unsigned long long ull;int MOD=1000000007;
+
+char ch[8][8];
+
+void solve ()
+{ 
+      int k;
+      cin>>k;
+      
+      memset(ch,'X',sizeof(ch));
+      //ch[0][0]='O'; //king is now placed
+    
+      for(int i=0;i<8 ;i++)
+      {
+          for (int j=0;j<8 ;j++)
+          {
+              ch[i][j]='.';
+              
+              if(--k==0)
+                    return;
+          }
+      }
+    
+
+}
+
+
+int main() {
+  int test;
+  cin>>test;
+  while (test--)
+  {
+      solve();
+      
+      ////printing ans///////
+      ch[0][0]='O';
+      for (int i=0;i<8;i++)
+      {
+          for (int j=0;j<8;j++)
+            cout<<ch[i][j];
+            
+          cout<<endl;
+      }
+      
+      cout<<endl;
+  }
+return 0;
+}
+

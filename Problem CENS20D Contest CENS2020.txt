@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+#define fastio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+using namespace std; typedef long long ll; typedef unsigned long long ull; int MOD = 1000000007;
+
+
+
+void solve () {
+  int n;
+  cin >> n;
+  vector<int> a;
+  for (int i = 0; i < n; i++) {
+    int kkk; cin >> kkk;
+    a.push_back(kkk);
+  }
+
+  if (n < 2) {
+    cout << "0";
+    return;
+  }
+
+  ll ans = 0;
+
+  for (int i = 0; i < n - 1; i++) {
+    int k = a[i];
+    for (int j = i + 1; j < n; j++) {
+      if ((a[j]&k) == k)
+        ans++;
+    }
+  }
+  cout << ans;
+
+
+}
+
+
+int main() {
+
+  fastio
+
+  int t = 1;
+  cin >> t;
+  while (t--) {
+    solve();
+    cout << endl;
+  }
+  return 0;
+}
+

@@ -1,0 +1,102 @@
+//#include <bits/stdc++.h>
+
+
+#include <cmath>
+#include <functional>
+#include <fstream>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+#include <set>
+#include <map>
+#include <list>
+#include <time.h>
+#include <math.h>
+#include <random>
+#include <deque>
+#include <queue>
+#include <cassert>
+#include <unordered_map>
+#include <unordered_set>
+#include <iomanip>
+#include <bitset>
+#include <sstream>
+#include <chrono>
+#include <cstring>
+ 
+using namespace std;
+ 
+typedef long long ll;
+typedef unsigned long long ull;
+ int MOD=1000000007;
+
+#ifdef iq
+  mt19937 rnd(228);
+#else
+  mt19937 rnd(chrono::high_resolution_clock::now().time_since_epoch().count());
+#endif
+ 
+ void solve ()
+{ 
+      int n;
+      cin>>n;
+      ll x[(4*n)-1];
+      ll y[(4*n)-1];
+      for (int i=0;i<(4*n)-1;i++)
+      {
+          cin>>x[i];
+          cin>>y[i];
+      }
+      /////////////////////////////////
+      
+     map<ll,ll> xhash;
+     map<ll,ll> yhash;
+     
+     for(int i=0;i<(4*n)-1;i++)
+     {
+         xhash[x[i]]++;
+         yhash[y[i]]++;
+     }
+     
+     ll ansx,ansy;
+     
+     for (auto it=xhash.begin();it!=xhash.end();it++)
+     {
+         if ((it->second) % 2==1) //if odd
+           {
+               ansx=it->first;
+               //break;
+           } 
+     }
+     
+     for (auto it=yhash.begin();it!=yhash.end();it++)
+     {
+         if ((it->second) % 2==1) //if odd
+           {
+               ansy=it->first;
+               //break;
+           } 
+     }
+     
+     cout<<ansx<<" "<<ansy;
+     
+}
+ 
+ 
+ 
+int main() {
+#ifdef iq
+  freopen("a.in", "r", stdin);
+#endif
+  ios::sync_with_stdio(0);
+  cin.tie(0);
+  int test;
+  cin>>test;
+  while (test--)
+  {
+      solve();
+      cout<<endl;
+  }
+return 0;
+}

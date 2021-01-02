@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+void solve()
+{
+    int n, m, k;
+    cin >> n >> m >> k;
+
+    int a[n][k + 1];
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < k + 1; j++) {
+            cin >> a[i][j];
+        }
+    }
+
+    //////////////////////////////////////////////////
+
+    int ans = 0;
+
+    for (int i = 0; i < n; i++) {
+        int q = a[i][k];
+        ll s = 0;
+        for (int j = 0; j < k; j++) {
+            s += a[i][j];
+        }
+
+        if (s >= m && q <= 10)
+            ans++;
+    }
+
+    cout << ans ;
+
+
+}
+
+
+int main()
+{
+#ifndef ONLINE_JUDGE
+    freopen ("input.txt", "r", stdin);
+    freopen ("op.txt", "w", stdout);
+#endif
+
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t = 1;
+    //cin >> t;
+    while (t--) {
+        solve();
+        cout << endl;
+    }
+
+    return 0;
+}
+
+

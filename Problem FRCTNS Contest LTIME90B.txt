@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+
+bool isGood(ll a, ll b) {
+
+
+    if (a % (b) == 0)
+        return true;
+
+    return false;
+}
+
+void solve()
+{
+    int n;
+    cin >> n;
+
+    int ans = 0;
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = i + 1; j <= n; j++) {
+            ll num =  i + (i * j);
+            ll denom = (  j - i);
+            if (isGood(num, denom))
+                ans++;
+        }
+    }
+
+    cout << ans ;
+
+}
+
+
+int main()
+{
+#ifndef ONLINE_JUDGE
+    freopen ("input.txt", "r", stdin);
+    freopen ("op.txt", "w", stdout);
+#endif
+
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t = 1;
+    //cin >> t;
+    while (t--) {
+        solve();
+        cout << "\n";
+    }
+
+    return 0;
+}

@@ -1,0 +1,168 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int solveQuery(vector<int> &a, int originalLen) {
+    int n = a.size();
+    int x, y;
+    cin >> x >> y;
+
+    x--;
+
+    int prevNum = a[x];
+    int newNum = y;
+
+    if (x == 0) {
+        if (prevNum == a[1]) {
+            if (newNum == a[1]) {
+                //do nothing
+            }
+            else {
+                originalLen++;
+            }
+        }
+        else {
+            if (newNum == a[1]) {
+                originalLen--;
+            }
+            else {
+                //do nothing
+            }
+        }
+    }
+
+    else if (x == n - 1) {
+
+        if (prevNum == a[x - 1]) {
+
+            if (newNum == a[x - 1]) {
+                //doNothing
+            }
+            else {
+                originalLen++;
+            }
+        }
+        else {
+            if (newNum == a[x - 1]) {
+                originalLen--;
+            }
+            else {
+
+            }
+        }
+    }
+
+    else {
+        if (a[x] == a[x - 1] && a[x] == a[x + 1] && a[x - 1] == a[x + 1]) { //1 1 1
+            if (newNum == prevNum) {
+                //doNothing
+            }
+            else {
+                originalLen += 2;
+            }
+        }
+
+        else if (a[x] != a[x - 1] && a[x] != a[x + 1] && a[x - 1] == a[x + 1]) { //1 2 1
+            if (newNum == a[x - 1]) {
+                originalLen -= 2;
+            }
+            else {
+                //doNothing
+            }
+        }
+        else if (a[x] == a[x - 1] && a[x] != a[x + 1] && a[x - 1] != a[x + 1]) { // 2 2 1
+            if (newNum == a[x - 1]) {
+                //doNothing
+            }
+            else if (newNum == a[x + 1]) {
+                //doNothing
+            }
+            else {
+                originalLen++;
+            }
+        }
+        else if (a[x] != a[x - 1] && a[x] == a[x + 1] && a[x - 1] != a[x + 1]) { // 1 2 2
+            if (newNum == a[x]) {
+                //doNothing
+            }
+            else if (newNum == a[x - 1]) {
+                //doNothing
+            }
+            else {
+                originalLen++;
+            }
+        }
+        else if (a[x] != a[x - 1] && a[x] != a[x + 1] && a[x - 1] != a[x + 1]) { //1 2 3
+            if (newNum == a[x]) {
+                //doNothing
+            }
+            else if (newNum == a[x - 1]) {
+                originalLen--;
+            }
+            else if (newNum == a[x + 1]) {
+                originalLen--;
+            }
+        }
+    }
+
+
+
+
+    a[x] = y;
+
+    cout << originalLen << endl;
+
+    return originalLen;
+
+}
+
+void solve()
+{
+    ll n, q;
+    cin >> n >> q;
+
+    vector<int>a(n);
+    for (int i = 0; i < n; i++)   cin >> a[i];
+
+    //////////////////////////////////////////////////
+
+    int originalLen = 1;
+
+    if (n != 1) {
+        for (int i = 1; i < n; i++) {
+            if (a[i] != a[i - 1])
+                originalLen++;
+        }
+    }
+
+    while (q--) {
+
+        if (n == 1) {
+            cout << "1" << endl;
+            continue;
+        }
+        originalLen = solveQuery(a, originalLen);
+    }
+}
+
+
+int main()
+{
+#ifndef ONLINE_JUDGE
+    freopen ("input.txt", "r", stdin);
+    freopen ("op.txt", "w", stdout);
+#endif
+
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t = 1;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
+
+    return 0;
+}
+
+

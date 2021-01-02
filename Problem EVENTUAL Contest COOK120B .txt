@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+using namespace std; typedef long long ll; typedef unsigned long long ull;int MOD=1000000007;
+
+
+void solve ()
+{ 
+      int n;
+      cin>>n;
+      string s;
+      cin>>s;
+      
+      int hash1[256]={0};
+      
+      for (int i=0;i<n;i++)
+      {
+          hash1[s[i]]++;
+      }
+      for (int i=0;i<256;i++)
+      {
+          if (hash1[i]%2!=0)
+          {
+              cout<<"NO";
+              return;
+          }
+      }
+      cout<<"YES";
+}
+
+
+int main() {
+#ifdef iq
+  freopen("a.in", "r", stdin);
+#endif
+  ios::sync_with_stdio(0);
+  cin.tie(0);
+  int t;
+  cin >> t;
+  while (t--) 
+  {
+    solve();
+    cout<<endl;
+  }
+}
+

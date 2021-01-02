@@ -1,0 +1,125 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+
+vector<int> invert(vector<int> x, int s, int e) {
+    for (int i = s; i <= e; i += 2) {
+        if (x[i] == 0)
+            x[i] = 1;
+        else
+            x[i] = 0;
+
+    }
+    return x;
+}
+
+int find(vector<int> &a) {
+    for (int i = 0; i < a.size(); i++) {
+        if (a[i] == 1)
+            return i;
+    }
+    return -1;
+}
+
+void solve()
+{
+    string a, b;
+    cin >> a >> b;
+
+    int n = a.length();
+
+    vector<int> x(n);
+
+    for (int i = 0; i < n; i++) {
+        if (a[i] == b[i])
+            x[i] = 0;
+        else
+            x[i] = 1;
+    }
+
+
+
+    int firstOne = -1;
+    for (int i = 0; i < n; i++) {
+        if (x[i] == 1) {
+            firstOne = i;
+            break;
+        }
+    }
+
+    if (firstOne == -1) {
+        cout << "0";
+        return;
+    }
+
+    //int flag = 1;
+    int ans = 0;
+
+    while (1) {
+
+        int s = -1;
+        int e = -1;
+        //flag = 0;
+        for (int i = firstOne; i < n; i += 2) {
+            if (x[i] == 1) {
+                // flag = 1;
+                if (s == -1)
+                    s = i;
+                e = i;
+            }
+            else {
+                if (s == -1)
+                    continue;
+                else {
+                    x = invert(x, s, e);
+                    ans++;
+                    s = -1;
+                    e = -1;
+                }
+
+            }
+        }
+
+        if (s != -1) {
+            x = invert(x, s, e);
+            ans++;
+            s = -1;
+            e = -1;
+        }
+
+        firstOne = find(x);
+        if (firstOne == -1) {
+            cout << ans;
+            return;
+        }
+    }
+
+
+
+    cout << ans;
+
+}
+
+
+int main()
+{
+#ifndef ONLINE_JUDGE
+    freopen ("input.txt", "r", stdin);
+    freopen ("op.txt", "w", stdout);
+#endif
+
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t = 1;
+    cin >> t;
+    while (t--) {
+        solve();
+        //cout << "He";
+        cout << endl;
+    }
+
+    return 0;
+}
+
+

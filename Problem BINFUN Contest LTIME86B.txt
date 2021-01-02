@@ -1,0 +1,80 @@
+#include <bits/stdc++.h>
+using namespace std; typedef long long ll; typedef unsigned long long ull;int MOD=1000000007;
+
+ll leftmost(ll a)
+{
+    for (ll i=63;i>=0;i--)
+    {
+        if (((a>>i)&1)==1)
+            return i+1;
+    }
+}
+
+
+void solve ()
+{
+      int n;
+      cin>>n;
+      vector<ll> a;
+      for (int i=0;i<n;i++)
+      {
+          ll kkk; cin>>kkk;
+          a.push_back(kkk);
+      }
+
+      ll lefsetbit[n];
+
+      for (int i=0;i<n;i++)
+          lefsetbit[i]=leftmost(a[i]);
+
+      //for (int i=0;i<n;i++)
+        //cout<<lefsetbit[i]<<" ";
+
+
+        cout<<endl;
+
+      ll m=INT_MIN;
+
+      for (int i=0;i<n;i++)
+      {
+          for (int j=0;j<n;j++)
+          {
+              ll xy= a[i]<<lefsetbit[j];
+               //if (i==0 && j==1)
+                //cout<<xy<<endl;
+              xy+=a[j];
+              //if (i==0 && j==1)
+                //cout<<xy<<endl;
+
+              ll yx= a[j]<<lefsetbit[i];
+              yx+=a[i];
+
+            //if (i==0 && j==1)
+             //cout<<xy<<endl<<yx<<endl;
+
+              ll cur=xy-yx;
+              m=max(m,cur);
+          }
+      }
+     cout<<m;
+
+
+
+}
+
+
+int main() {
+#ifdef iq
+  freopen("a.in", "r", stdin);
+#endif
+  ios::sync_with_stdio(0);
+  cin.tie(0);
+  int t=1;
+  cin >> t;
+  while (t--)
+  {
+    solve();
+    cout<<endl;
+  }
+}
+
